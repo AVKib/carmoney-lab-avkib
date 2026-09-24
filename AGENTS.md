@@ -15,17 +15,17 @@ curl http://localhost:8080/health
 Без Docker: `composer install`, затем `make test` и `make lint` работают локально.
 
 ## Структура
-- `backend/` — PHP 8.3 + Slim: `src/Domain` (правила), `src/Http`, `src/Repository`, `config/rules.php`, `public/`
+- `backend/` — PHP 8.3 + Slim: `src/Domain`, `src/Http`, `src/Repository`, `src/Support`, `config/rules.php`, `public/`
 - `frontend/` — форма заявки на ванильном JS
 - `db/` — `schema.sql` и `seed.sql` (синтетические заявки)
 - `tests/` — PHPUnit: `Unit/` и `Feature/`
-- `docs/` — артефакты задач: `setup/`, `intent/`, `spec/`, `plan/`, `metrics/`; `sources/` — материалы клиента
+- `docs/` — артефакты задач: `setup/`, `intent/`, `spec/`, `plan/`, `metrics/`, `qa/`, `review/`; `sources/` — материалы клиента
 - `kilo.jsonc` — конфиг Kilo Code (модель, права, MCP); `.kilo/agents/` — свои агенты
-- `.githooks/`, `scripts/`, `mocks/` — git-хуки, служебные скрипты, моки внешних сервисов
+- `.githooks/`, `.github/`, `scripts/`, `mocks/` — git-хуки, CI, служебные скрипты, моки внешних сервисов
 
 ## Конвенции кода
 - `declare(strict_types=1)` в каждом PHP-файле, классы `final`, свойства через конструктор
-- Namespace `CarMoneyLab\`, PSR-4 от `backend/src/`
+- Namespace `CarMoneyLab\` (тесты — `CarMoneyLab\Tests\`), PSR-4 от `backend/src/` и `tests/`
 - Бизнес-числа не хардкодим: пороги и лимиты берём из `backend/config/rules.php`
 - Тесты: AAA, имя описывает поведение, тест заканчивается assert'ом, а не действием
 
