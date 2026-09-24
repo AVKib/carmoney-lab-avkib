@@ -31,6 +31,13 @@ Docker'а на ноутбуке нет? Тогда локально работа
 | `make seed` | перезалить учебные данные |
 | `make help` | список всех команд |
 
+## Как проверить, что сервис жив
+
+1. Поднимите стек: `make up` — соберёт и запустит `backend` и `db` (`docker compose up -d --build`). Сервис будет на <http://localhost:8080/>.
+2. Проверьте состояние контейнеров: `make ps` — `backend` и `db` должны быть в состоянии `running`/`healthy`. У `db` в `docker-compose.yml` есть healthcheck (`mysqladmin ping`), и `backend` стартует только после `service_healthy`.
+3. Проверьте HTTP-эндпоинт: `curl http://localhost:8080/health` — это `GET /health` из таблицы API ниже.
+4. Если ответ не приходит — `make logs` покажет вывод `php -S` из контейнера `backend`.
+
 ## API
 
 | Метод | Путь | Зачем |
