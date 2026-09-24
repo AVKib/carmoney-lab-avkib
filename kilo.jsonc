@@ -3,5 +3,25 @@
 // руками в задании 1.3.2, MCP-сервер Playwright (блок "mcp") — в задании 1.6.3.
 // Ключей и токенов здесь нет и не будет: ключ OpenRouter живёт только в настройках Kilo.
 {
-  "model": "openrouter/minimax/minimax-m3"
+  "$schema": "https://app.kilo.ai/config.json",
+  "model": "openrouter/minimax/minimax-m3",
+  "permission": {
+    "read": {
+      "*": "allow",
+      "*.env*": "deny"
+    },
+    "edit": {
+      "*": "allow",
+      "*.env*": "deny",
+      "kilo.jsonc": "deny"
+    },
+    "bash": {
+      "*": "ask",
+      "git *": "allow",
+      "git push*": "ask",
+      "make *": "allow",
+      "*.env*": "deny",
+      "*reset_db*": "deny"
+    }
+  }
 }
