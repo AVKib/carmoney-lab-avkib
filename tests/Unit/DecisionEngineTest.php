@@ -14,7 +14,7 @@ final class DecisionEngineTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->engine = new DecisionEngine(['approve_max' => 60.0, 'review_max' => 85.0]);
+        $this->engine = new DecisionEngine(['approve_max' => 60.0, 'review_max' => 85.0], 400000);
     }
 
     #[DataProvider('ltvValues')]
