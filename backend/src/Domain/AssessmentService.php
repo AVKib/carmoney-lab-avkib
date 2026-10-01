@@ -30,7 +30,7 @@ final class AssessmentService
         $input = $this->validator->validate($payload);
 
         $ltv = $this->ltvCalculator->calculate($input['requested_amount'], $input['market_value']);
-        $decision = $this->decisionEngine->decide($ltv);
+        $decision = $this->decisionEngine->decide($ltv, $input['mileage']);
 
         return [
             'vehicle_age' => $this->vehicleAge->inYears($input['year']),
